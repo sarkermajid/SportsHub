@@ -1,0 +1,18 @@
+{
+  "name": "sportshub/sportshub",
+  "type": "project",
+  "description": "A sports portal project",
+  "keywords": [],
+  "license": [],
+  "require": {
+
+  },
+  "require-dev": {
+
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app//"
+    }
+  }
+}

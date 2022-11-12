@@ -1,0 +1,68 @@
+<?php include "header.php"; ?>
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 pt-5 bg-dark p-5 rounded-3 shadow-lg">
+                    <a href="action.php?page=admin" class="btn btn-outline-info btn-lg d-inline-block d-block fw-semibold mb-3">Admin</a>
+                    <a href="action.php?page=add-news" class="btn btn-outline-info btn-lg d-inline-block d-block fw-semibold mb-3">Add News</a>
+                    <a href="action.php?page=manage-news" class="btn btn-outline-info btn-lg d-inline-block d-block fw-semibold mb-3">Manage News</a>
+                    <a href="action.php?page=add-category" class="btn btn-outline-info btn-lg d-inline-block d-block fw-semibold mb-3">Add Category</a>
+                    <a href="action.php?page=manage-category" class="btn btn-outline-info btn-lg d-inline-block d-block fw-semibold mb-3">Manage Category</a>
+                    <a href="" class="btn btn-outline-info d-inline-block btn-lg d-block fw-semibold mb-3">Logout</a>
+                </div>
+                <div class="col-md-9 mx-auto pt-5">
+                    <div class="card bg-dark fw-semibold text-white shadow-lg">
+                        <div class="card-header fw-bold h2 text-center border-info">Edit News</div>
+                        <div class="card-body">
+                            <h4 class="text-success text-center"><?php echo $message; ?></h4>
+                            <form action="action.php" method="post" enctype="multipart/form-data">
+                                <div class="row mb-3">
+                                    <div class="col-md-3">Title</div>
+                                    <div class="col-md-9">
+                                        <input type="text" value="<?php echo $singleNews['title']?>" class="form-control" name="title">
+                                        <input type="hidden" name="id" value="<?php echo $singleNews['id']?>">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">Author</div>
+                                    <div class="col-md-9">
+                                        <input type="text" value="<?php echo $singleNews['author']?>" class="form-control" name="author">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">Category</div>
+                                    <div class="col-md-9">
+                                        <input type="text" value="<?php echo $singleNews['category_name']?>" class="form-control" name="category_name">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">Content</div>
+                                    <div class="col-md-9">
+                                        <textarea type="text" name="content" class="form-control"><?php echo $singleNews['title']?></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">Image</div>
+                                    <div class="col-md-9">
+                                        <input type="file" class="form-control" name="image">
+                                        <img src="<?php echo $singleNews['image']?>" width="100" height="100" class="mt-3" alt="">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-9">
+                                        <input type="submit" class="btn btn-outline-info fw-semibold" name="news-update-btn" value="Update News">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<?php include "footer.php"; ?>
