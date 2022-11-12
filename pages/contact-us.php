@@ -8,25 +8,28 @@
             </div>
             <div class="col-md-6 rounded-1">
                 <h3 class="text-dark mb-4">Send Your Message</h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="" class="">Your Name</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="" class="">Your Email</label>
-                        <input type="email" class="form-control">
-                    </div>
+                <h4 class="text-success text-center"><?php echo $confirmMessage ?></h4>
+                <form action="action.php" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="" class="">Your Name</label>
+                            <input type="text" name="name" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="">Your Email</label>
+                            <input type="email"  name="email" class="form-control">
+                        </div>
 
-                    <div class="col-md-12 mt-3">
-                        <label for="" class="">Your Comment</label>
-                        <textarea name="" id="" class="form-control" cols="30" rows="5"></textarea>
-                    </div>
+                        <div class="col-md-12 mt-3">
+                            <label for="" class="">Your Comment</label>
+                            <textarea type="text" name="message" class="form-control" cols="30" rows="5"></textarea>
+                        </div>
 
-                    <div class="col-md-12 py-3">
-                        <input type="submit" class="btn btn-success w-100 form-control-sm" value="Submit"/>
+                        <div class="col-md-12 py-3">
+                            <input type="submit" name="message-btn" class="btn btn-success w-100 form-control-sm" value="Submit"/>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

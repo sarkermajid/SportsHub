@@ -4,11 +4,13 @@ require_once 'vendor/autoload.php';
 use App\classes\Admin;
 use App\classes\AdminNews;
 use App\classes\AdminCategory;
+use App\classes\Message;
 
 $category = new AdminCategory();
 $categories = $category->getAllCategory();
 
 $message = '';
+$confirmMessage = '';
 
 if(isset($_GET['page']))
 {
@@ -18,11 +20,18 @@ if(isset($_GET['page']))
         $allNews = $adminNews->getAllNews();
         include 'pages/home.php';
     }
-    if($_GET['page'] == 'about')
+    elseif ($_GET['page'] == 'news-datail')
+    {
+        $id = $_GET['id'];
+        $adminNews = new AdminNews();
+        $detailNews = $adminNews->getNewsById($id);
+        include 'pages/news-detail.php';
+    }
+    elseif($_GET['page'] == 'about')
     {
         include 'pages/about-us.php';
     }
-    if($_GET['page'] == 'contact')
+    elseif($_GET['page'] == 'contact')
     {
         include 'pages/contact-us.php';
     }
@@ -83,6 +92,19 @@ if(isset($_GET['page']))
         $category = new AdminCategory();
         $category->deleteCategory($id);
     }
+
+    elseif($_GET['page'] == 'message')
+    {
+        $message = new Message();
+        $singleMessage = $message->getAllMessage();
+        include 'pages/admin/messages.php';
+    }
+    elseif($_GET['page'] == 'delete-message')
+    {
+        $id = $_GET['id'];
+        $message = new Message();
+        $message->deleteMessage($id);
+    }
 }
 // Admin
 
@@ -117,4 +139,13 @@ elseif(isset($_POST['update_category_btn']))
 {
     $category = new AdminCategory($_POST);
     $category->updateCategory();
+}
+
+// User message
+
+elseif(isset($_POST['message-btn']))
+{
+    $message = new Message($_POST);
+    $confirmMessage = $message->sendMessage();
+    include 'pages/contact-us.php';
 }

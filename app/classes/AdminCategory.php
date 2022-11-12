@@ -2,13 +2,14 @@
 
 
 namespace App\classes;
-
+use App\classes\Database;
 
 class AdminCategory
 {
     private $categoryName;
     private $sql;
     private $dbConnect;
+    private $database;
     private $queryResult;
     private $row;
     private $data = [];

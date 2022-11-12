@@ -34,7 +34,7 @@
                         and clearly explains how someone would benefit from signing up</p>
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm rounded-0" placeholder="Enter your email" >
-                        <button type="button" class="btn btn-sm text-white bg-signup-color rounded-0">SIGN UP</button>
+                        <button type="button" class="btn btn-sm text-white bg-signup-color rounded-0">Subscribe</button>
                     </div>
                 </div>
             </div>
