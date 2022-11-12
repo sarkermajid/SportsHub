@@ -5,13 +5,26 @@ use App\classes\Admin;
 use App\classes\AdminNews;
 use App\classes\AdminCategory;
 
+$category = new AdminCategory();
+$categories = $category->getAllCategory();
+
 $message = '';
 
 if(isset($_GET['page']))
 {
     if($_GET['page'] == 'home')
     {
+        $adminNews = new AdminNews();
+        $allNews = $adminNews->getAllNews();
         include 'pages/home.php';
+    }
+    if($_GET['page'] == 'about')
+    {
+        include 'pages/about-us.php';
+    }
+    if($_GET['page'] == 'contact')
+    {
+        include 'pages/contact-us.php';
     }
     elseif($_GET['page'] == 'admin')
     {
@@ -55,8 +68,6 @@ if(isset($_GET['page']))
     }
     elseif($_GET['page'] == 'manage-category')
     {
-        $category = new AdminCategory();
-        $categories = $category->getAllCategory();
         include "pages/admin/manage-category.php";
     }
     elseif($_GET['page'] == 'edit-category')
