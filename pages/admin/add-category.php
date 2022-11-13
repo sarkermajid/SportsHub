@@ -1,3 +1,11 @@
+<?php
+
+if(!isset($_SESSION['id']))
+{
+    header('Location: action.php?page=login');
+}
+
+?>
 <?php include "header.php"; ?>
 
                 <div class="col-md-9 mx-auto pt-5">

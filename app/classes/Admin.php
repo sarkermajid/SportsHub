@@ -25,7 +25,7 @@ class Admin
         {
             $this->name = $post['name'];
             $this->email = $post['email'];
-            $this->password = $post['password'];
+            $this->password = md5($post['password']);
 
             if(isset($post['id'])){
                 $this->id = $post['id'];
@@ -33,9 +33,13 @@ class Admin
         }
     }
 
-    public function index()
+    public function addAdmin($post = null)
     {
-        include 'pages/admin/login.php';
+        $this->sql = "INSERT INTO admins (name,email,password) VALUES ('$this->name', '$this->email', '$this->password')";
+        $this->dbConnect = $this->database->dbConnect();
+        mysqli_query($this->dbConnect, $this->sql);
+
+        return "New admin added successfully";
     }
 
     public function getAdmin()

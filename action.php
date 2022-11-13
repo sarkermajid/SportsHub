@@ -1,10 +1,11 @@
 <?php
-
+session_start();
 require_once 'vendor/autoload.php';
 use App\classes\Admin;
 use App\classes\AdminNews;
 use App\classes\AdminCategory;
 use App\classes\Message;
+use App\classes\Auth;
 
 $category = new AdminCategory();
 $categories = $category->getAllCategory();
@@ -41,12 +42,25 @@ if(isset($_GET['page']))
         $admins = $admin->getAdmin();
         include 'pages/admin/admin.php';
     }
+    elseif($_GET['page'] == 'add-admin')
+    {
+        include 'pages/admin/add-admin.php';
+    }
+    elseif ($_GET['page'] == 'login')
+    {
+        include 'pages/admin/login.php';
+    }
     elseif($_GET['page'] == 'update-profile')
     {
         $id = $_GET['id'];
         $admin = new Admin();
         $singleAdmin = $admin->getAdminById($id);
         include "pages/admin/update-profile.php";
+    }
+    elseif($_GET['page'] == 'logout')
+    {
+        $auth = new Auth();
+        $auth->logout();
     }
     elseif ($_GET['page'] == 'add-category')
     {
@@ -108,6 +122,18 @@ if(isset($_GET['page']))
 }
 // Admin
 
+elseif (isset($_POST['add-admin-btn']))
+{
+    $admin = new Admin($_POST);
+    $message = $admin->addAdmin();
+    include 'pages/admin/add-admin.php';
+}
+elseif (isset($_POST['login-btn']))
+{
+    $auth = new Auth($_POST);
+    $message = $auth->login();
+    include "pages/admin/login.php";
+}
 elseif(isset($_POST['update-admin']))
 {
     $admin = new Admin($_POST);
