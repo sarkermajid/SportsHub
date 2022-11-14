@@ -30,7 +30,12 @@ if(!isset($_SESSION['id']))
                                 <div class="row mb-3">
                                     <div class="col-md-3">Category</div>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="category_name">
+                                        <select name="category_id" class="form-control show-tick" required>
+                                            <option value="">-- Category Name--</option>
+                                            <?php foreach ($categories as $category){?>
+                                                <option value="<?php echo $category['id']?>"> <?php echo $category['category_name']?> </option>
+                                            <?php }?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

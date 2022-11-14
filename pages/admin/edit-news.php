@@ -28,15 +28,9 @@ if(!isset($_SESSION['id']))
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-3">Category</div>
-                                    <div class="col-md-9">
-                                        <input type="text" value="<?php echo $singleNews['category_name']?>" class="form-control" name="category_name">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
                                     <div class="col-md-3">Content</div>
                                     <div class="col-md-9">
-                                        <textarea type="text" name="content" class="form-control"><?php echo $singleNews['title']?></textarea>
+                                        <textarea type="text" name="content" class="form-control"><?php echo $singleNews['content']?></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

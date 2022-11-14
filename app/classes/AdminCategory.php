@@ -78,4 +78,20 @@ class AdminCategory
 
         header('Location: action.php?page=manage-category');
     }
+
+    public function getCategoryByCricket()
+    {
+        $this->sql = "SELECT * FROM categories WHERE category_name = 'cricket'";
+        $this->queryResult=mysqli_query($this->database->dbConnect(),$this->sql);
+        $this->data = mysqli_fetch_assoc($this->queryResult);
+        return $this->data['id'];
+    }
+
+    public function getCategoryByFootball(){
+        $this->sql = "SELECT * FROM categories WHERE category_name='football'";
+        $this->queryResult=mysqli_query($this->database->dbConnect(),$this->sql);
+        $this->data=mysqli_fetch_assoc($this->queryResult);
+        return $this->data['id'];
+    }
+
 }

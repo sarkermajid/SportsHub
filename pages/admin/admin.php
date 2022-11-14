@@ -1,43 +1,46 @@
 <?php
 
-    if(!isset($_SESSION['id']))
-    {
-        header('Location: action.php?page=login');
-    }
+if(!isset($_SESSION['id']))
+{
+    header('Location: action.php?page=login');
+}
 
 ?>
 <?php include "header.php"; ?>
 
-                <div class="col-md-9 mx-auto pt-5">
-                    <div class="card bg-dark fw-semibold text-white shadow-lg">
-                        <div class="card-header fw-bold h2 text-center border-info">Admin Profile</div>
-                        <div class="card-body">
-                            <?php foreach ($admins as $admin) { ?>
-                            <div class="row mb-3">
-                                <div class="col-md-3">Name</div>
-                                <div class="col-md-9">
-                                    <p><?php echo $admin['name'] ?></p>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-3">E-mail</div>
-                                <div class="col-md-9">
-                                    <p><?php echo $admin['email'] ?></p>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-9">
-                                    <a href="action.php?page=update-profile&&id=<?php echo $admin['id'] ?>" class="btn btn-outline-info">Update Profile</a>
-                                </div>
-                            </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+<div class="col-md-9 mx-auto pt-5">
+    <div class="card bg-dark fw-semibold text-white shadow-lg">
+        <div class="card-header fw-bold h2 text-center border-info">Manage Categories</div>
+        <div class="card-body">
+            <table class="table table-dark table-bordered table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($admins as $admin) { ?>
+                    <tr>
+                        <td><?php echo $admin['name'] ?></td>
+                        <td><?php echo $admin['email'] ?></td>
+                        <td class="text-center">
+                            <a href="action.php?page=update-profile&&id=<?php echo $admin['id']?>" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Edit</a>
+                            &nbsp;
+                            <a href="action.php?page=delete-category&&id=<?php echo $admin['id']?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this ?')"><i class="fa-solid fa-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
         </div>
-    </section>
+    </div>
+</div>
+</div>
+</div>
+</section>
 
 
 <?php include "footer.php"; ?>

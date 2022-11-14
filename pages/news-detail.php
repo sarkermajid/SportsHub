@@ -9,7 +9,6 @@
                 </div>
                 <p class="pt-3"><?php echo $detailNews['content']?></p>
                 <span class="text-muted small"><span class="text-dark fw-semibold">Author :</span> <?php echo $detailNews['author'] ?></span>
-                <span class="text-muted small float-end"><span class="text-dark fw-semibold">Category :</span> <?php echo $detailNews['category_name'] ?></span>
             </div>
         </div>
     </div>

@@ -18,7 +18,6 @@ if(!isset($_SESSION['id']))
                                 <tr class="text-center">
                                     <th>News Title</th>
                                     <th>Author</th>
-                                    <th>Category</th>
                                     <th>News Content</th>
                                     <th>Image</th>
                                     <th>Action</th>
@@ -27,10 +26,9 @@ if(!isset($_SESSION['id']))
                             <tbody>
                                 <?php foreach ($allNews as $news) { ?>
                                 <tr>
-                                    <td><?php echo $news['title'] ?></td>
+                                    <td><?php echo substr($news['title'], '0','25').'...' ?></td>
                                     <td><?php echo $news['author'] ?></td>
-                                    <td><?php echo $news['category_name'] ?></td>
-                                    <td><?php echo $news['content'] ?></td>
+                                    <td><?php echo substr($news['content'], '0','50').'...' ?></td>
                                     <td><img src="<?php echo $news['image'] ?>" alt="" height="50" width="50"></td>
                                     <td class="text-center">
                                         <a href="action.php?page=edit-news&&id=<?php echo $news['id']?>" class="btn btn-primary btn-sm"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Edit</a>

@@ -17,7 +17,13 @@ if(!isset($_SESSION['id']))
                                 <div class="row mb-3">
                                     <div class="col-md-3">Category Name</div>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="category_name">
+                                        <select name="category_name" class="form-control show-tick">
+                                            <option value="">-- Category Name--</option>
+                                            <option value="cricket">Cricket</option>
+                                            <option value="football">Football</option>
+                                            <option value="tennis">Tennis</option>
+                                            <option value="basketball">Basketball</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

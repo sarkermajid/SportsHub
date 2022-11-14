@@ -8,7 +8,7 @@ class AdminNews
 {
     private $title;
     private $author;
-    private $categoryName;
+    private $categoryId;
     private $content;
     private $imageName;
     private $tempLocation;
@@ -20,6 +20,7 @@ class AdminNews
     private $data = [];
     private $row;
     private $id;
+    private $queryResult;
 
     public function __construct($post = null, $files = null)
     {
@@ -29,7 +30,7 @@ class AdminNews
         {
             $this->title        = $post['title'];
             $this->author       = $post['author'];
-            $this->categoryName = $post['category_name'];
+            $this->categoryId   = $post['category_id'];
             $this->content      = $post['content'];
 
             if(isset($post['id']))
@@ -54,7 +55,7 @@ class AdminNews
     public function addNews()
     {
         $this->image        = $this->getImageUrl();
-        $this->sql          = "INSERT INTO newses (title,author,category_name,content,image) VALUES ('$this->title', '$this->author','$this->categoryName', '$this->content', '$this->image')";
+        $this->sql          = "INSERT INTO newses (title,author,category_id,content,image) VALUES ('$this->title', '$this->author','$this->categoryId', '$this->content', '$this->image')";
         $this->dbConnect    = $this->database->dbConnect();
         mysqli_query($this->dbConnect, $this->sql);
 
@@ -109,6 +110,30 @@ class AdminNews
         $this->dbConnect = $this->database->dbConnect();
         mysqli_query($this->dbConnect, $this->sql);
         header('Location: action.php?page=manage-news');
+    }
+
+    public function getAllNewsByCricket($cricketId)
+    {
+        $this->sql = "SELECT * FROM newses WHERE category_id=$cricketId ORDER BY id DESC LIMIT 4";
+        $this->queryResult=mysqli_query($this->database->dbConnect(),$this->sql);
+
+        while($this->row=mysqli_fetch_assoc($this->queryResult)){
+            array_push($this->data, $this->row);
+        }
+
+        return $this->data;
+    }
+
+    public function getAllNewsByFootball($footballId)
+    {
+        $this->sql = "SELECT * FROM newses WHERE category_id=$footballId ORDER BY id DESC LIMIT 4";
+        $this->queryResult=mysqli_query($this->database->dbConnect(),$this->sql);
+
+        while($this->row=mysqli_fetch_assoc($this->queryResult)){
+            array_push($this->data, $this->row);
+        }
+
+        return $this->data;
     }
 
 }

@@ -17,9 +17,31 @@ if(isset($_GET['page']))
 {
     if($_GET['page'] == 'home')
     {
-        $adminNews = new AdminNews();
-        $allNews = $adminNews->getAllNews();
+        $category = new AdminCategory();
+        $cricketCategoryId = $category->getCategoryByCricket();
+        $footballCategoryId = $category->getCategoryByFootball();
+        $allNews = new AdminNews();
+        $cricketNews = $allNews->getAllNewsByCricket($cricketCategoryId);
+        $footballNews = $allNews->getAllNewsByFootball($footballCategoryId);
+        $news = new AdminNews();
+        $allNews = $news->getAllNews();
         include 'pages/home.php';
+    }
+    elseif($_GET['page'] == 'cricket')
+    {
+        $category = new AdminCategory();
+        $cricketCategoryId = $category->getCategoryByCricket();
+        $allNews = new AdminNews();
+        $cricketNews = $allNews->getAllNewsByCricket($cricketCategoryId);
+        include 'pages/cricket.php';
+    }
+    elseif($_GET['page'] == 'football')
+    {
+        $category = new AdminCategory();
+        $footballCategoryId = $category->getCategoryByFootball();
+        $allNews = new AdminNews();
+        $footballNews = $allNews->getAllNewsByFootball($footballCategoryId);
+        include 'pages/football.php';
     }
     elseif ($_GET['page'] == 'news-datail')
     {

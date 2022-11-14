@@ -40,18 +40,17 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="card card-footer border-0 rounded-0 bg-white text-center">
-                            <h4>Sports News</h4>
+                            <h4>Cricket News</h4>
                         </div>
-                        <?php foreach ($allNews as $news) { ?>
+                        <?php foreach ($cricketNews as $cnews) { ?>
                         <div class="col-md-6 pb-4">
                             <div class="card pb-0 m-0">
-                                <img src="<?php echo $news['image'] ?>" class="rounded-top" alt="" height="300">
+                                <img src="<?php echo $cnews['image'] ?>" class="rounded-top" alt="" height="300">
                                 <div class="card-body pb-3">
-                                    <a href="action.php?page=news-datail&&id=<?php echo $news['id'] ?>" class="text-decoration-none pb-5"><?php echo substr($news['title'], '0','110').'...' ?></a>
-                                    <p class="text-muted small pt-2 pb-0 mb-0"><?php echo substr($news['content'],'0', '250').'...'  ?></p>
-                                    <a href="action.php?page=news-datail&&id=<?php echo $news['id'] ?>" class="d-inline-block d-block text-decoration-none mt-0">read more...</a>
-                                    <span class="text-muted small"><span class="text-dark fw-semibold">Author :</span> <?php echo $news['author'] ?></span>
-                                    <span class="text-muted small float-end"><span class="text-dark fw-semibold">Category :</span> <?php echo $news['category_name'] ?></span>
+                                    <a href="action.php?page=news-datail&&id=<?php echo $cnews['id'] ?>" class="text-decoration-none pb-5"><?php echo substr($cnews['title'], '0','110').'...' ?></a>
+                                    <p class="text-muted small pt-2 pb-0 mb-0"><?php echo substr($cnews['content'],'0', '150').'...'  ?></p>
+                                    <a href="action.php?page=news-datail&&id=<?php echo $cnews['id'] ?>" class="d-inline-block d-block text-decoration-none mt-0">read more...</a>
+                                    <span class="text-muted small"><span class="text-dark fw-semibold">Author :</span> <?php echo $cnews['author'] ?></span>
                                 </div>
                             </div>
                         </div>
@@ -65,12 +64,33 @@
                         </div>
                         <div class="card-body pt-0">
                             <?php foreach ($allNews as $news) { ?>
-                            <div class="border-bottom py-3">
-                                <a href="action.php?page=news-datail&&id=<?php echo $news['id'] ?>" class="text-decoration-none"><?php echo $news['title']?></a>
-                                <p class="text-muted small"><?php echo $news['category_name']?></p>
-                            </div>
+                                <div class="border-bottom py-3">
+                                    <a href="action.php?page=news-datail&&id=<?php echo $news['id'] ?>" class="text-decoration-none"><?php echo $news['title']?></a>
+                                </div>
                             <?php } ?>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="card card-footer border-0 rounded-0 bg-white text-center">
+                            <h4>Football News</h4>
+                        </div>
+                        <?php foreach ($footballNews as $fnews) { ?>
+                            <div class="col-md-6 pb-4">
+                                <div class="card pb-0 m-0">
+                                    <img src="<?php echo $fnews['image'] ?>" class="rounded-top" alt="" height="300">
+                                    <div class="card-body pb-3">
+                                        <a href="action.php?page=news-datail&&id=<?php echo $fnews['id'] ?>" class="text-decoration-none pb-5"><?php echo substr($fnews['title'], '0','110').'...' ?></a>
+                                        <p class="text-muted small pt-2 pb-0 mb-0"><?php echo substr($fnews['content'],'0', '150').'...'  ?></p>
+                                        <a href="action.php?page=news-datail&&id=<?php echo $fnews['id'] ?>" class="d-inline-block d-block text-decoration-none mt-0">read more...</a>
+                                        <span class="text-muted small"><span class="text-dark fw-semibold">Author :</span> <?php echo $fnews['author'] ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
